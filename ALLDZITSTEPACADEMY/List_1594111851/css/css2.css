@@ -1,0 +1,25 @@
+ .maintext{
+    font-family: fantasy;
+     margin-bottom: 30px;
+}
+.maintag{
+    margin-bottom: 20px;
+}
+.gray{
+    color: gainsboro;
+    margin-bottom: 0px;
+}
+.blue{
+    color: blue;
+    margin-bottom: 0px;
+}
+ol summary{
+    font-family: cursive;
+     margin-bottom: 7px;
+}
+li summary{
+    margin-bottom: 0px;
+}
+footer{
+    text-align: center;
+}

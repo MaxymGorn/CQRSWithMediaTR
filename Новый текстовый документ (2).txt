@@ -1,0 +1,136 @@
+curl --location --request POST 'http://0.0.0.0:5000/api/tablo/SendToTablo' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "IpAdress": "192.168.5.11",
+       "frames": [
+{"effectout":"NOT_CLEAR_AREA",
+           "effectin":"IMMEDIATE_SHOW",
+           "inSpeed":0,
+           "outSpeed":0,
+        "displayTime": 5,
+        "verticalSegments": [{
+            "horizontalSegments": [{
+                "colorname": "White",
+                "content": "ОБМІН ВАЛЮТ",
+                "fontname": "Arial",
+                "fontsize": 12,
+                "horizontalSurfacePercentage": 100,
+                "starthorizontalSurfacePercentage": 1,
+                "startverticalSurfacePercentage": 33,
+                "type": "text",
+                "fontStyle": "Bold",
+                "verticalSurfacePercentage": 1
+            }]
+        },  {
+            "horizontalSegments": [{
+                "colorname": "Blue",
+                "content": "26.00",
+                "fontname": "Arial",
+                "fontsize": 10,
+                "horizontalSurfacePercentage": 33,
+                "starthorizontalSurfacePercentage": 3,
+                "startverticalSurfacePercentage": 25,
+                "type": "text",
+                "fontStyle": "Bold",
+                "verticalSurfacePercentage": 30
+            }, {
+                "colorname": "Green",
+                "content": "USD",
+                "fontname": "Arial",
+                "fontsize": 12,
+                "horizontalSurfacePercentage": 33,
+                "starthorizontalSurfacePercentage": 33,
+                "startverticalSurfacePercentage": 25,
+                "type": "text",
+                "fontStyle": "Bold",
+                "verticalSurfacePercentage": 30
+            }, {
+                "colorname": "Blue",
+                "content": "27.00",
+                "fontname": "Arial",
+                "fontsize": 10,
+                "fontStyle": "Bold",
+                "horizontalSurfacePercentage": 33,
+                "starthorizontalSurfacePercentage": 66,
+                "startverticalSurfacePercentage": 25,
+                "type": "text",
+                "verticalSurfacePercentage": 30
+            }]
+        }, {
+            "horizontalSegments": [{
+                "colorname": "Blue",
+                "content": "27.00",
+                "fontname": "Arial",
+                "fontsize": 10,
+                "fontStyle": "Bold",
+                "horizontalSurfacePercentage": 33,
+                "starthorizontalSurfacePercentage": 3,
+                "startverticalSurfacePercentage": 25,
+                "type": "text",
+                "verticalSurfacePercentage": 55
+            }, {
+                "colorname": "Green",
+                "content": "EUR",
+                "fontname": "Arial",
+                "fontsize": 12,
+                "fontStyle": "Bold",
+                "horizontalSurfacePercentage": 33,
+                "starthorizontalSurfacePercentage": 33,
+                "startverticalSurfacePercentage": 25,
+                "type": "text",
+                "verticalSurfacePercentage": 55
+            }, {
+                "colorname": "Blue",
+                "content": "28.00",
+                "fontname": "Arial",
+                "fontsize": 10,
+                "fontStyle": "Bold",
+                "horizontalSurfacePercentage": 33,
+                "starthorizontalSurfacePercentage": 66,
+                "startverticalSurfacePercentage": 25,
+                "type": "text",
+                "verticalSurfacePercentage": 55
+            }]
+        }, {
+            "horizontalSegments": [{
+                "colorname": "Blue",
+                "content": "00.30",
+                "fontname": "Arial",
+                "fontsize": 10,
+                "fontStyle": "Bold",
+                "horizontalSurfacePercentage": 33,
+                "starthorizontalSurfacePercentage": 3,
+                "startverticalSurfacePercentage": 25,
+                "type": "text",
+                "verticalSurfacePercentage": 80
+            }, {
+                "colorname": "Green",
+                "content": "RUB",
+                "fontname": "Arial",
+                "fontsize": 12,
+                "fontStyle": "Bold",
+                "horizontalSurfacePercentage": 33,
+                "starthorizontalSurfacePercentage": 33,
+                "startverticalSurfacePercentage": 25,
+                "type": "text",
+                "verticalSurfacePercentage": 80
+            }, {
+                "colorname": "Blue",
+                "content": "00.40",
+                "fontname": "Arial",
+                "fontsize": 10,
+                "fontStyle": "Bold",
+                "horizontalSurfacePercentage": 33,
+                "starthorizontalSurfacePercentage": 66,
+                "startverticalSurfacePercentage": 25,
+                "type": "text",
+                "verticalSurfacePercentage": 80
+            }]
+        }]} ]
+
+    
+}
+ 
+ 
+
+'

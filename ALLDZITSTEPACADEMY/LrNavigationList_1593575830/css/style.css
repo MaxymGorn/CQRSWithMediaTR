@@ -1,0 +1,113 @@
+body {
+    text-align: center;
+    padding: 10px 5%;
+    font: 13pt "Consolas";
+    color: gray;
+}
+main {
+    text-align: justify;
+    width: 90%;
+    border: 1px solid silver;
+    margin: 20px auto;
+    padding: 20px 30px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    box-shadow: 0 0 silver, 0 10px 20px silver;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+main p {
+    text-indent: 30px;
+}
+.Text h{
+    text-align: center;
+    font-size: 40px;
+    font-family: cursive;
+    color: aliceblue;
+}
+ul {
+    margin: 5px 0px 5px 30px
+    
+}
+.winter ul {
+    list-style-image: url(../img/winter_16.png); 
+    padding-left: 24px; 
+}
+.spring ul {
+    list-style-image: url(../img/spring_16.png); 
+    padding-left: 24px; 
+}
+.summer ul {
+    list-style-image: url(../img/summer_16.png); 
+    padding-left: 24px; 
+}
+.autumn ul {
+    list-style-image: url(../img/autumn_16.png); 
+    padding-left: 24px; 
+}
+li{
+    font: 12px;
+    font-family: fantasy;
+}
+.lwinter li{
+    color: dodgerblue;   
+}
+.lsummer li{
+    color: yellow;   
+}
+.lspring li{
+    color: greenyellow;   
+}
+.lautumn li{
+    color: orange;   
+}
+summary:hover{
+    color:darkorchid;
+    text-decoration-color: aquamarine
+}
+summary:active{
+    color:aliceblue;
+}
+li:hover{
+    color:beige;
+    text-decoration-color: aquamarine
+}
+li:active{
+    color:aliceblue;
+}
+#Summary{
+  display: table;
+  margin: 0 auto;
+  font-family: "Roboto Slab";
+  font-weight: 100;
+  font-size: 1em;
+  background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+  -webkit-background-clip: text;
+  line-height: 17px;
+}
+
+@keyframes invisiblyGrowFontSize {
+	0% {
+    font-size: 0;
+    opacity: 0;
+	}
+	100% {
+    font-size: 1em;
+    opacity: 0;
+	}
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+	100% {
+		opacity: 1;
+	}
+}
+.details[open]  {
+  animation-name: invisiblyGrowFontSize, fadeIn;
+  animation-duration: 400ms, 200ms;
+  animation-delay: 0ms, 400ms;
+}
+
+}

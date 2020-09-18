@@ -1,0 +1,21 @@
+.blockelem{
+    background-color: green;
+    color: white;
+}
+.blockelem p{
+    background-color: aquamarine;
+    padding: 10px 40px 20px;
+}
+.blockelem summary{
+    padding: 10px 10px 20px 20px;
+}
+
+.blocktext 
+{
+    padding: 16px 60px 15px 1px;
+}
+.blocktext  summary
+{
+    padding: 3px 3px 15px 15px;
+    color: black;
+}
