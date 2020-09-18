@@ -9,35 +9,35 @@ using System.Web.Mvc;
 using System.Web.Services.Description;
 using System.Windows.Forms;
 using WebApplication19.Data;
-using Qmate_Entities = Qmate.Preliminary.Registration.General.Data.Qmate_Entities;
+using WebApplication19.ViewModel;
 
 namespace WebApplication19.Controllers
 {
     public class HomeController : Controller
     {
-        Qmate_Entities entities = new Qmate_Entities();
+        public ViewModel.ViewModel viewModel;
+        public HomeController()
+        {
+            viewModel=  ViewModel.ViewModel.GetInstance();
+        }
         public ActionResult Index()
         {
-            return View(GetJobsList(1));
+            return View(viewModel);
         }
-        private IEnumerable<RetrieveJobList_Result> GetJobsList(int key = 0)
+
+        [HttpGet]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1062:Проверить аргументы или открытые методы", Justification = "<Ожидание>")]
+        public async Task<ActionResult> SetWorkTime(string date, string job)
         {
-            return entities.RetrieveJobList(key).ToList();
+               return PartialView("SetWorkTime", viewModel.GetRetrieveWorkloadTime(date, viewModel.GetJobIdAsync(job)));
+
         }
 
         [HttpPost]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1062:Проверить аргументы или открытые методы", Justification = "<Ожидание>")]
-        public async Task<JsonResult> SaveDb(int? terminalId, string authCode, int? clientId, int? segmentId, string setTime, int? jobId, int? employeeId, int? needApply, string clientPhone, string clientEmail, string commentary, string clientName, string information, string typeInformation, string timeInHold, int? setId, int? notificationType, int? notificationEvt)
+        public async Task<JsonResult> SaveDb(int? terminalId, string authCode, int? clientId, int? segmentId, string setTime, string jobId, int? employeeId, int? needApply, string clientPhone, string clientEmail, string commentary, string clientName, string information, string typeInformation, string timeInHold, int? setId, int? notificationType, int? notificationEvt)
         {
-            try
-            {
-                entities.AddClient(terminalId, authCode, clientId, segmentId, setTime, employeeId, needApply, clientPhone, clientEmail, commentary, clientName, information, typeInformation, timeInHold, setId, notificationType, notificationEvt, jobId);
-                await entities.SaveChangesAsync();
-            }
-            catch(Exception er)
-            {
-                //MessageBox.Show(er.Message);
-            }
+            viewModel.MakeClient(terminalId, authCode, clientId, segmentId, setTime, viewModel.GetJobIdAsync(jobId), employeeId, needApply, clientPhone, clientEmail, commentary, clientName, information, typeInformation, timeInHold, setId, notificationType, notificationEvt);
             return JsonConvert.DeserializeObject<dynamic>("Success!");
         }
     }

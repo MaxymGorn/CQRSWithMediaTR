@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QmateModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Qmate_Entities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="RetrieveJobList" ReturnType="Collection(QmateModel.RetrieveJobList_Result)">
+      <Parameter Name="Key" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RetrieveWorkloadDays" ReturnType="Collection(QmateModel.RetrieveWorkloadDays_Result)">
+      <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+      <Parameter Name="JobId" Mode="In" Type="Int32" />
+      <Parameter Name="BeginDate" Mode="In" Type="String" />
+      <Parameter Name="EndDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RetrieveWorkloadTime" ReturnType="Collection(QmateModel.RetrieveWorkloadTime_Result)">
+      <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+      <Parameter Name="RegDate" Mode="In" Type="String" />
+      <Parameter Name="JobId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddClient" ReturnType="Collection(Int32)">
+      <Parameter Name="TerminalId" Mode="In" Type="Int32" />
+      <Parameter Name="AuthCode" Mode="In" Type="String" />
+      <Parameter Name="ClientId" Mode="In" Type="Int32" />
+      <Parameter Name="SegmentId" Mode="In" Type="Int32" />
+      <Parameter Name="SetTime" Mode="In" Type="String" />
+      <Parameter Name="JobId" Mode="In" Type="Int32" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="NeedApply" Mode="In" Type="Int32" />
+      <Parameter Name="ClientPhone" Mode="In" Type="String" />
+      <Parameter Name="ClientEmail" Mode="In" Type="String" />
+      <Parameter Name="Commentary" Mode="In" Type="String" />
+      <Parameter Name="ClientName" Mode="In" Type="String" />
+      <Parameter Name="Information" Mode="In" Type="String" />
+      <Parameter Name="TypeInformation" Mode="In" Type="String" />
+      <Parameter Name="TimeInHold" Mode="In" Type="String" />
+      <Parameter Name="SetId" Mode="In" Type="Int32" />
+      <Parameter Name="NotificationType" Mode="In" Type="Int32" />
+      <Parameter Name="NotificationEvt" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="RetrieveJobList_Result">
+    <Property Type="Int32" Name="JobId" Nullable="false" />
+    <Property Type="String" Name="nameUkr" Nullable="true" MaxLength="512" />
+  </ComplexType>
+  <ComplexType Name="RetrieveWorkloadDays_Result">
+    <Property Type="DateTime" Name="DateDay" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="IsAllow" Nullable="true" />
+    <Property Type="Int32" Name="Exclude" Nullable="true" />
+    <Property Type="DateTime" Name="StartTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="StopTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="SheduleBreak" Nullable="true" />
+    <Property Type="DateTime" Name="StartBreak" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="StopBreak" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="CountPerson" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="RetrieveWorkloadTime_Result">
+    <Property Type="Int32" Name="IsAllow" Nullable="true" />
+    <Property Type="DateTime" Name="StartInt" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="StopInt" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="CountPerson" Nullable="true" />
+  </ComplexType>
+</Schema>

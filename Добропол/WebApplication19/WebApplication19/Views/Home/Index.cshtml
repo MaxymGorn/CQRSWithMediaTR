@@ -1,5 +1,5 @@
-﻿@using WebApplication19.Data
-@model IEnumerable<RetrieveJobList_Result>
+﻿@using  WebApplication19.ViewModel
+@model ViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -11,6 +11,8 @@
     <title>qmate form</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
+    <link rel="stylesheet" href="~/Css/src/css/vanilla-calendar-min.css" />
+    <script src="~/Css/src/js/vanilla-calendar-min.js"  type="text/javascript"></script>
     <link href="https://uploads-ssl.webflow.com/5eb44229a10ed6956f54278e/css/qmate-form.webflow.dd55b1db5.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -21,7 +23,6 @@
                 families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"]
             }
         });
-
     </script>
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif]-->
     <script type="text/javascript">
@@ -30,7 +31,6 @@
                 t = " w-mod-";
             n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
         }(window, document);
-
     </script>
     <link href="https://uploads-ssl.webflow.com/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="https://uploads-ssl.webflow.com/img/webclip.png" rel="apple-touch-icon" />
@@ -47,13 +47,14 @@
                 <form id="wf-form-Reg_form" name="wf-form-Reg_form" data-name="Reg_form" class="form">
                     <div class="columns w-row">
                         <div class="column w-col w-col-6">
-                            <label for="name-2" class="field-label">Тема звернення:</label><select id="field" name="field" required="" class="select-field-2 w-select">
-    <option value=""></option>
-    @foreach (var elem in Model)
-    {      
-        <option value="@Html.DisplayFor(mod=>elem.nameUkr)"> @Html.DisplayFor(mod=>elem.nameUkr);</option>
-    }
-</select>
+                            <label for="name-2" class="field-label">Тема звернення:</label>
+                            <select id="field" name="field" required="" class="select-field-2 w-select">
+                                <option value=""></option>
+                                @foreach (var elem in Model.retrieveJobList_Results)
+                                {
+                                    <option value="@Html.DisplayFor(mod=>elem.nameUkr)"> @Html.DisplayFor(mod => elem.nameUkr);</option>
+                                }
+                            </select>
                             <label for="name-4" class="name_field">Ім&#x27;я:</label>
                             <input type="text" class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name" required="" />
                             <label for="name-2" class="field-label">Прізвище:</label>
@@ -67,65 +68,51 @@
                         </div>
                         <div class="w-col w-col-6">
                             <div class="date_headind">Оберіть дату візиту:</div>
-                            <div class="w-layout-grid grid">
-                                <div id="w-node-0c68d0ee318a-7754278f" class="div-block">
-                                    <a href="index.html#" class="button-2 w-button"></a>
-                                    <div class="text-block-2">Квітень 2020</div><a href="index.html#" class="button-3 w-button"></a>
+                            <div class="content">
+                                <div id="myCalendar" class="vanilla-calendar" style="margin-bottom: 20px"></div>
+                            </div>
+
+                            <script>
+                                    let pastDates = true,
+                                        availableDates = false,
+                                        availableWeekDays = false
+                                    let calendar = new VanillaCalendar({
+                                        selector: "#myCalendar",
+                                        months: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", " Вересень", "Жовтень", "Листопад", " Грудень"],
+                                        shortWeekday: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                                        onSelect: (data, elem) => {
+                                            var el = (Object.values(data));
+                                            var date;
+                                            date = new Date(el[0]);
+                                            date = date.getUTCFullYear() + '-' +
+                                                ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
+                                                ('00' + date.getUTCDate()).slice(-2) + ' ' +
+                                                ('00') + ':' +
+                                                ('00') + ':' +
+                                                ('00');
+                                            var formData = new FormData();
+                                            formData.append("date", date);
+                                            var selectedText = $("#field option:selected").html();
+                                            formData.append("job", selectedText);
+                                            $.ajax({
+                                                url: '@Url.Action("SetWorkTime")',
+                                                type: 'GET',
+                                                cache: false,
+                                                data: { date: date, job: selectedText}
+                                            }).done(function(result) {
+                                                $('#Time').html(result);
+                                            });
+                                        }
+                                    })
+                            </script>
+                                <div class="text-block">Оберіть час візиту:</div>
+                                <select id="Time" name="Time" data-name="Time" required="" class="select-field w-select">
+                                    <option value=""></option>
+                                </select>
+                                <div class="div-block-2">
+                                    <input type="submit" id="SentData" value="Відправити" data-wait="Хвилинку..." class="submit-button w-button" />
                                 </div>
-                                <div id="w-node-6d4421e79445-7754278f" class="monday">Пн</div>
-                                <div id="w-node-5985d573740c-7754278f" class="sunday">Нд</div>
-                                <div id="w-node-f6e485625adf-7754278f" class="tuesday">Сб</div>
-                                <div id="w-node-d7af506e896f-7754278f" class="friday">Пт</div>
-                                <div id="w-node-6ff860ad124f-7754278f" class="thursday">Чт</div>
-                                <div id="w-node-b98ffca2c1d1-7754278f" class="wednesday">Ср</div>
-                                <div id="w-node-a4275a48d6ac-7754278f" class="tuesday">Вт</div>
-                                <a href="index.html#" class="no_date w-button">
-                                </a><a href="index.html#" class="no_date w-button">
-                                </a>
-                                <a href="#" class="button w-button">1</a>
-                                <a href="#" class="button w-button">2</a>
-                                <a href="#" class="button w-button">3</a>
-                                <a href="#" class="weekend_date w-button">4</a>
-                                <a href="#" class="weekend_date w-button">5</a>
-                                <a href="#" class="button w-button">6</a>
-                                <a href="#" class="button w-button">7</a>
-                                <a href="#" class="button w-button">8</a>
-                                <a href="#" class="button w-button">9</a>
-                                <a href="#" class="button w-button">10</a>
-                                <a href="#" class="weekend_date w-button">11</a>
-                                <a href="#" class="weekend_date w-button">12</a>
-                                <a href="#" class="button w-button">13</a>
-                                <a href="#" class="button w-button">14</a>
-                                <a href="#" class="button w-button">15</a>
-                                <a href="#" class="button w-button">16</a>
-                                <a href="#" class="button w-button">17</a>
-                                <a href="#" class="weekend_date w-button">18</a>
-                                <a href="#" class="weekend_date w-button">19</a>
-                                <a href="#" class="button w-button">20</a>
-                                <a href="#" class="button w-button">21</a>
-                                <a href="#" class="button w-button">22</a>
-                                <a href="#" class="button w-button">23</a>
-                                <a href="#" class="button w-button">24</a>
-                                <a href="#" class="weekend_date w-button">25</a>
-                                <a href="#" class="weekend_date w-button">26</a>
-                                <a href="#" class="button w-button">27</a>
-                                <a href="#" class="button w-button">28</a>
-                                <a href="#" class="button w-button">29</a>
-                                <a href="#" class="button w-button">30</a>
-                                <a href="#" class="no_date w-button"></a>
-                                <a id="w-node-3687270a119c-7754278f" href="index.html#" class="no_date w-button">
-                                </a><a href="index.html#" class="no_date w-button"></a>
                             </div>
-                            <div class="text-block">Оберіть час візиту:</div><select id="Time" name="Time" data-name="Time" required="" class="select-field w-select">
-                                <option value=""></option>
-                                <option value="First">First Choice</option>
-                                <option value="Second">Second Choice</option>
-                                <option value="Third">Third Choice</option>
-                            </select>
-                            <div class="div-block-2">
-                            <input type="submit" id="SentData" value="Відправити" data-wait="Хвилинку..." class="submit-button w-button" />
-                            </div>
-                        </div>
                     </div>
                 </form>
                 <div class="success-message w-form-done">
