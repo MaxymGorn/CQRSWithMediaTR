@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Customer.API</name>
+    </assembly>
+    <members>
+        <member name="M:Customer.API.Controllers.ShopController.CreateGoods(Customer.Domain.Commands.CreateGoodsCommand)">
+            <summary>
+            Create Goods
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Controllers.ShopController.CreateGoodsBackGround(Customer.Domain.Commands.CreateGoodsCommandBackGround)">
+            <summary>
+            Create Goods in background
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Controllers.ShopController.GetListGoodsQuery(Shop.Domain.Queries.GetListGoodsQuery)">
+            <summary>
+            Get List Goods
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Controllers.ShopController.CreateCategory(Customer.Domain.Commands.CreateCategoryCommand)">
+            <summary>
+            Create Category
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Controllers.ShopController.CreateCategoryBackGround(Customer.Domain.Commands.CreateCategoryCommandBackGround)">
+            <summary>
+            Create Category in background
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Controllers.ShopController.GetListCategoryQuery(Customer.Domain.Queries.GetListCategoryQuery)">
+            <summary>
+            Get List Category
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Controllers.ShopController.ContainCategoryQuery(Customer.Domain.Queries.GetCategoryQuery)">
+            <summary>
+            Get Categories by id
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Controllers.ShopController.GetListManufacturerQuery(Customer.Domain.Queries.GetListManufacturerQuery)">
+            <summary>
+            Get List Manufacturer
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Controllers.ShopController.CreateManufacturer(Customer.Domain.Commands.CreateManufacturerCommand)">
+            <summary>
+            Create Manufacturer
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Controllers.ShopController.CreateManufacturerBackGround(Customer.Domain.Commands.CreateManufacturerCommandBackGround)">
+            <summary>
+            Create Manufacturer in background
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Controllers.ShopController.ContainManufacturerQuery(Customer.Domain.Queries.GetManufacturerQuery)">
+            <summary>
+            Get Manufacturers by id
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Customer.API.Extensions.UseAutoMigrateDatabaseAsync``1(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+                Auto migrate version of database from migrations
+            </summary>
+        </member>
+    </members>
+</doc>

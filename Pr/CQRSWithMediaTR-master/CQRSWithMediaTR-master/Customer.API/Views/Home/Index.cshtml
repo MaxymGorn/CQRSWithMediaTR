@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Maxs Shop!!!</h1>
+        <div class="flex">
+            <section>
+                <img src="https://static.pexels.com/photos/24166/pexels-photo-24166-medium.jpg" alt="Goods" />
+                <h2>Goods</h2>
+                <p>...</p>
+                <aside>
+                    <button onclick="location.href='@Url.Action("GetGoodsAsync", "Goods")'">See Goods</button>
+                </aside>
+            </section>
+            <section>
+                <img src="https://static.pexels.com/photos/191160/pexels-photo-191160-medium.jpeg" alt="Categories" />
+                <h2>Categories</h2>
+                <p>...</p>
+                <aside>
+                    <button >See Categories</button>
+                </aside>
+            </section>
+            <section>
+                <img src="https://static.pexels.com/photos/9556/camera-lens-hero-gopro-medium.jpg" alt=">Manufacturer" />
+                <h2>Manufacturer</h2>
+                <p>...</p>
+                <aside>
+                    <button>See Manufacturers</button>
+                </aside>
+            </section>
+        </div>
+    </div>

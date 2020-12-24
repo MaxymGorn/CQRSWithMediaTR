@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <LangVersion>7.3</LangVersion>
+        <UserSecretsId>cc490a85-f32a-4a9f-be48-769296655996</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <StartupObject>Customer.API.Program</StartupObject>
+        <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>F:\CQRSWithMediaTR\Customer.API\Customer.API.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.18" />
+        <PackageReference Include="Hangfire.MemoryStorage" Version="1.7.0" />
+        <PackageReference Include="MediatR" Version="9.0.0" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="3.1.8" />
+        <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.2.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
+        <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.NET.Sdk.Razor" Version="3.1.9" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+        <PackageReference Include="RestSharp" Version="106.11.7" />
+        <PackageReference Include="Serilog" Version="2.10.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+        <PackageReference Include="Serilog.Enrichers.Environment" Version="2.1.3" />
+        <PackageReference Include="Serilog.Exceptions" Version="6.0.0" />
+        <PackageReference Include="Serilog.Sinks.Debug" Version="1.0.1" />
+        <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.5.0-alpha0003" />
+        <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Api.Domain\Customer.Domain.csproj" />
+      <ProjectReference Include="..\Customer.Data\Customer.Data.csproj" />
+      <ProjectReference Include="..\Customer.Service\Customer.Service.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Logs\" />
+      <Folder Include="Views\Home\Pages\" />
+    </ItemGroup>
+
+</Project>
