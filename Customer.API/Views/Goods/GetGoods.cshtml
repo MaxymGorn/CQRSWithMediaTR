@@ -1,0 +1,26 @@
+﻿@using Shop.Maxs.ViewModels
+@model GoodsViewModel
+@using (Html.BeginForm("GetGoodsAsync", "Goods", FormMethod.Post))
+{
+    <div>
+        @foreach (var item in Model.GoodsDtos)
+        {
+            <tr>
+                <th scope="row">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </th>
+                <td>
+                    <div class="col-sm-4 col-sm-offset-4 ">
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GoodName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GoodCount)
+                </td>
+
+            </tr>
+        }
+    </div>
+}}

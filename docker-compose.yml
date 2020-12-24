@@ -1,0 +1,60 @@
+version: '3.4'
+
+services:
+
+  elasticsearch:  
+   container_name: elasticsearch  
+   image: docker.elastic.co/elasticsearch/elasticsearch:7.9.1  
+   ports:  
+    - 9200:9200  
+   volumes:  
+    - elasticsearch-data:/usr/share/elasticsearch/data  
+   environment:  
+    - xpack.monitoring.enabled=true  
+    - xpack.watcher.enabled=false  
+    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"  
+    - discovery.type=single-node  
+   networks:  
+    - elastic  
+  
+  kibana:  
+   container_name: kibana  
+   image: docker.elastic.co/kibana/kibana:7.9.1  
+   ports:  
+    - 5601:5601  
+ 
+   environment:  
+    - ELASTICSEARCH_URL=http://localhost:9200  
+   networks:  
+    - elastic  
+    
+  db:
+        image: "mcr.microsoft.com/mssql/server"
+        container_name: maxs_shop_db
+        ports:
+            - "1433:1433"
+        environment:
+            SA_PASSWORD: "Your_password123"
+            ACCEPT_EULA: "Y"
+        volumes:
+            - ./Db:/var/opt/mssql/data
+
+  customer.api:
+    image: ${DOCKER_REGISTRY-}customerapi
+    build:
+      context: .
+      dockerfile: Customer.API/Dockerfile
+    ports:
+      - '3002'
+    links:
+      - elasticsearch:elasticsearch
+    entrypoint: ["Customer.API/wait-for-it.sh", "vc-db:1433", "-t", "120", "--", "dotnet", "Customer.API.dll"]
+    depends_on:
+      - db
+
+networks:  
+  elastic:  
+    driver: bridge  
+  
+volumes:  
+  elasticsearch-data:  
